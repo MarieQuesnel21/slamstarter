@@ -8,26 +8,12 @@ use Symfony\Component\Routing\Annotation\Route;
 class DefaultController extends AbstractController
 {
     /**
-     * @Route("/accueil", name="default")
+     * @Route("/")
      */
     public function index()
     {
         return $this->render('default/index.html.twig', [
             'controller_name' => 'DefaultController',
-        ]);
-    }
-
-     /**
-     * @Route("/user", name="default_user")
-     */
-
-    public function user()
-    {
-        $firstName = "jaques";
-        $lastName = "DUPOND";
-        return $this->render('default/user.html.twig', [
-            'first_name'=> $firstName,
-            'last_name'=> $lastName,
         ]);
     }
 }
