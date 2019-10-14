@@ -6,8 +6,16 @@
     <h1>Edit Category</h1>
 
     {{ include('category/_form.html.twig', {'button_label': 'Update'}) }}
+    {% if  is_granted('ROLE_USER')%}
+    <a href="{{ path('category_index') }}" class="btn btn-danger">{% trans %}back to list{% endtrans %}</a>
+    {% endif %}
+    
+    {% if  is_granted('ROLE_ADMIN')%}
+    <a href="{{ path('category_index') }}" class="btn btn-danger">back to list</a>
+    {% endif %}
 
-    <a href="{{ path('category_index') }}">back to list</a>
+    {% if  is_granted('ROLE_SUPER_ADMIN')%}
+    <a href="{{ path('category_delete', {'id': category.id})  }}" class="btn btn-danger">{% trans %}delite{% endtrans %}</a>
+    {% endif %}
 
-    {{ include('category/_delete_form.html.twig') }}
 {% endblock %}

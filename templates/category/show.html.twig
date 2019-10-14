@@ -21,10 +21,16 @@
             </tr>
         </tbody>
     </table>
+    {% if  is_granted('ROLE_USER')%}
+    <a href="{{ path('category_index') }}" class="btn btn-danger">{% trans %}back to list{% endtrans %}</a>
+    {% endif %}
 
-    <a href="{{ path('category_index') }}">{% trans %}back to list{% endtrans %}</a>
+    {% if  is_granted('ROLE_ADMIN')%}
+    <a href="{{ path('category_edit', {'id': category.id}) }}" class="btn btn-danger">{% trans %}edit{% endtrans %}</a>
+    {% endif %}
 
-    <a href="{{ path('category_edit', {'id': category.id}) }}">{% trans %}edit{% endtrans %}</a>
+    {% if  is_granted('ROLE_SUPER_ADMIN')%}
+    <a href="{{ path('category_delete', {'id': category.id})  }}" class="btn btn-danger">{% trans %}delite{% endtrans %}</a>
+    {% endif %}
 
-    {{ include('category/_delete_form.html.twig') }}
 {% endblock %}

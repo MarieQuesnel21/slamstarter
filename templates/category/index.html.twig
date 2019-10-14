@@ -22,16 +22,22 @@
                 <td>{{ category.shortname }}</td>
                 <td>{{ category.longname }}</td>
                 <td>
+                    {% if is_granted('ROLE_USER')  %}
                     <a  type="button" class="btn btn-danger" href="{{ path('category_show', {'id': category.id}) }}">
                         <i class="far fa-eye"></i>
                         {% trans %}show{% endtrans %}</a>
+                    {% endif %}  
+                    {% if is_granted('ROLE_ADMIN') %}  
                     <a  type="button" class="btn btn-danger" href="{{ path('category_edit', {'id': category.id}) }}">
                         <i class="far fa-edit"></i> 
                         {% trans %}edit{% endtrans %}</a>
+                    {% endif %}
+                    {% if  is_granted('ROLE_SUPER_ADMIN')%}
                     <a  type="button" class="btn btn-danger"  href="{{ path('category_delete', {'id': category.id}) }}">
                         <i class="fas fa-trash-alt"></i>
                         {% trans %}delete{% endtrans %}
                     </a>
+                    {% endif %}
                 </td>
             </tr>
         {% else %}
@@ -42,6 +48,7 @@
         </tbody>
     </table>
 
-    
+    {% if is_granted('ROLE_ADMIN') %}  
     <a  class="btn btn-primary" href="{{ path('category_new') }}">Create new</a>
+    {% endif %}
 {% endblock %}
