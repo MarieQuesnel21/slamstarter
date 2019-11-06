@@ -1,0 +1,31 @@
+<?php
+
+namespace App\Controller;
+
+use App\Entity\User;
+use App\Form\User1Type;
+use App\Repository\UserRepository;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\Routing\Annotation\Route;
+
+class ProjectController extends AbstractController
+{
+    /**
+     * @Route("/project", name="index")
+     */
+    public function project(){
+        $projects = array();
+        
+       $projects[0]['name'] = "project1"; 
+       $projects[1]['name'] = "project2"; 
+       $projects[2]['name'] = "project3"; 
+        
+       return $this->render('project.html.twig,[
+            'projects' => $projects,
+       ]);
+    }
+
+ 
+}
