@@ -1,0 +1,22 @@
+<html>
+        <head>
+                <meta charset="UTF-8">
+                <title> {%block title %} Welcome! {% endblock %} </title>
+                {% block stylesheets %} {% endblock %}
+        </head>
+        
+        <body>
+                 {% block body %}
+                         <h1>3 projects:</h1>
+                         <ul>
+                                {% for projects in projects %}
+                                        {% if projects|lenght < 10%}
+                                                <li> {{projects["name"]}} </li>
+                                        {% endif %}
+                                {% endfor %}
+                         </ul>
+                {% endblock %}
+                {% block javascripts %} {% endblock %}
+        </body>
+</html>
+                
