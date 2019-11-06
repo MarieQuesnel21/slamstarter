@@ -22,7 +22,7 @@ class ProjectController extends AbstractController
        $projects[1]['name'] = "project2"; 
        $projects[2]['name'] = "project3"; 
         
-       return $this->render('projects.html.twig,[
+       return $this->render('project.html.twig,[
             'projects' => $projects,
        ]);
     }
